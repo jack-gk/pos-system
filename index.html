@@ -9,21 +9,16 @@
 </head>
 
 <body>
-    <h1>Tiny POS</h1>
+    <h2>Products</h2>
+    <div id="filters"></div>
+    <div id="products"></div>
 
-    <section id="products"></section>
+    <h2>Current order</h2>
+    <ul id="order-items"></ul>
+    Total: £<span id="order-total">0.00</span><br>
+    <button id="complete-btn">Complete order</button>
 
-    <hr />
-
-    <section id="order-section">
-        <h2>Current Order</h2>
-        <ul id="order-items"></ul>
-        <p>Total: £<span id="order-total">0.00</span></p>
-        <button id="complete-btn">Complete Order</button>
-    </section>
-
-    <!-- import the script -->
-    <script type="module" src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
