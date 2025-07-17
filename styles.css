@@ -1,163 +1,49 @@
-/* theme tokens */
-:root {
-  /* spacing */
-  --space-xs: 0.25rem;
-  --space-sm: 0.6rem;
-  --space-md: 1rem;
-  --space-lg: 1.6rem;
+@import "tailwindcss";
 
-  /* radius + shadow */
-  --radius: 10px;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-  --shadow-lg: 0 6px 14px rgba(0, 0, 0, 0.15);
-
-  /* colours (light) */
-  --bg: #fafafa;
-  --text: #222;
-  --border: #dcdcdc;
-  --accent: #27ae60;
-  --accent-hover: #1e874b;
-  --btn-bg: #ffffff;
-  --btn-bg-hover: #f1f1f1;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1c1c1c;
-    --text: #e3e3e3;
-    --border: #3a3a3a;
-    --accent: #2ecc71;
-    --accent-hover: #26a75a;
-    --btn-bg: #2a2a2a;
-    --btn-bg-hover: #363636;
+@layer components {
+  /* Global layout & typography */
+  body {
+    @apply font-sans leading-relaxed bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
   }
-}
 
-/* global */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+  h1,
+  h2 {
+    @apply font-bold mt-6 mb-4;
+  }
 
-html,
-body {
-  height: 100%;
-}
+  hr {
+    @apply my-6 border-t border-gray-200 dark:border-gray-700;
+  }
 
-body {
-  font-family: system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  margin: 0 auto;
-  max-width: 720px;
-  padding: var(--space-md);
-  line-height: 1.5;
-}
+  /* Products grid (fixed 3‑column)*/
+  #products {
+    @apply grid grid-cols-3 gap-2 sm:gap-3;
+  }
 
-h1,
-h2 {
-  margin: var(--space-lg) 0 var(--space-md);
-  font-weight: 700;
-}
+  /* Product button */
+  .product-btn {
+    @apply flex flex-col items-center justify-center text-center font-semibold text-base p-6 rounded-lg border-2 border-gray-300 bg-white shadow-sm transition hover:bg-gray-100 hover:-translate-y-0.5 hover:shadow-lg active:shadow-sm active:translate-y-0 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700;
+  }
 
-/* subtle divider */
-hr {
-  margin: var(--space-lg) 0;
-  border: none;
-  border-top: 1px solid var(--border);
-}
+  /* Order card */
+  #order-section {
+    @apply mt-6 p-4 bg-white border border-gray-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-600;
+  }
 
-/* Products grid */
-#products {
-  display: grid;
-  gap: var(--space-sm);
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-}
+  #order-items {
+    @apply list-disc pl-6 mb-4;
+  }
 
-.product-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  #order-items li {
+    @apply mb-1;
+  }
 
-  padding: 1.4rem 0.7rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
+  #order-total {
+    @apply inline-block font-bold text-lg;
+  }
 
-  border: 2px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--btn-bg);
-  box-shadow: var(--shadow-sm);
-
-  cursor: pointer;
-  transition: background 120ms, transform 120ms, box-shadow 120ms;
-}
-
-.product-btn:hover,
-.product-btn:focus-visible {
-  background: var(--btn-bg-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  outline: none;
-}
-
-.product-btn:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-sm);
-}
-
-/* Order section */
-#order-section {
-  margin-top: var(--space-lg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: var(--space-md);
-  background: var(--btn-bg);
-  box-shadow: var(--shadow-sm);
-}
-
-#order-items {
-  padding-left: var(--space-md);
-  margin: 0 0 var(--space-md);
-}
-
-#order-items li {
-  margin-bottom: var(--space-xs);
-}
-
-/* totals */
-#order-total {
-  display: inline-block;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-/* Complete button */
-#complete-btn {
-  display: inline-block;
-  margin-top: var(--space-md);
-
-  padding: 0.9rem 1.4rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: var(--radius);
-
-  color: #fff;
-  background: var(--accent);
-  cursor: pointer;
-  transition: background 120ms, box-shadow 120ms;
-}
-
-#complete-btn:hover,
-#complete-btn:focus-visible {
-  background: var(--accent-hover);
-  box-shadow: var(--shadow-lg);
-  outline: none;
-}
-
-#complete-btn:active {
-  box-shadow: var(--shadow-sm);
+  /* Complete button */
+  #complete-btn {
+    @apply inline-block mt-4 px-6 py-3 rounded-lg font-semibold text-base text-white bg-green-600 hover:bg-green-700 transition shadow-sm hover:shadow-lg dark:bg-green-500 dark:hover:bg-green-600;
+  }
 }

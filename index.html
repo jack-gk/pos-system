@@ -5,20 +5,61 @@
     <meta charset="UTF-8" />
     <title>Tiny POS</title>
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dist/output.css" />
 </head>
 
-<body>
-    <h2>Products</h2>
-    <div id="filters"></div>
-    <div id="products"></div>
+<body class="h-screen w-3/4 mx-auto flex flex-col bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <!-- HEADER + CATEGORY BAR -->
+    <header
+        class="w-full bg-white/80 backdrop-blur shadow-sm border-b border-gray-200 dark:border-gray-700 px-4 py-2 flex items-center gap-4">
+        <!-- Brand / Title -->
+        <h1 class="text-2xl font-semibold whitespace-nowrap select-none">POS</h1>
 
-    <h2>Current order</h2>
-    <ul id="order-items"></ul>
-    Total: £<span id="order-total">0.00</span><br>
-    <button id="complete-btn">Complete order</button>
+        <!-- Search bar -->
+        <div class="relative flex-1 max-w-lg">
+            <input id="search-input" type="text" placeholder="Search products…"
+                class="w-full rounded-full border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-800 pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-400 transition" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 10-10.607-10.607 7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+        </div>
 
-    <script src="app.js"></script>
+        <!-- Category nav -->
+        <nav id="category-nav" class="ml-auto flex gap-6 overflow-x-auto">
+            <!-- Buttons injected by JS -->
+        </nav>
+    </header>
+
+    <!-- MAIN POS LAYOUT -->
+    <main class="flex-1 flex overflow-hidden">
+        <!-- Product grid -->
+        <section id="product-grid" class="flex-1 grid grid-cols-3 gap-4 p-4 overflow-y-auto">
+            <!-- Product cards injected by JS -->
+        </section>
+
+        <!-- Order panel -->
+        <aside
+            class="w-72 sm:w-80 bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700 flex flex-col">
+            <div id="order-lines" class="flex-1 p-4 space-y-3 overflow-y-auto text-sm"></div>
+
+            <div class="border-t border-gray-200 dark:border-gray-700 p-4">
+                <div class="flex justify-between text-lg font-semibold mb-4">
+                    <span>Total</span>
+                    <span id="grand-total">£0.00</span>
+                </div>
+                <button id="complete-btn"
+                    class="w-full bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white font-semibold py-2 rounded-lg transition">
+                    OK
+                </button>
+            </div>
+        </aside>
+    </main>
+
+    <!--SCRIPTS -->
+    <script src="app.js"></script>;
 </body>
 
 </html>

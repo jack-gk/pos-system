@@ -9,7 +9,6 @@ from contextlib import closing
 
 DB_FILE = "pos.db"
 
-# must line up with <script src="app.js"> catalog 
 CATALOG = [
     # id, name, price, fb_type, category
     (1,   "Full English Plate",   10.5,   "F",     "Breakfast"),
@@ -93,3 +92,6 @@ def seed():
 
 if __name__ == "__main__":
     seed()
+    #remove_all()
+    #build_tables()
+    print("Done")

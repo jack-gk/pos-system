@@ -25,7 +25,7 @@ def parse_and_round(ts_raw):
             if dt.tzinfo is None:
                 dt = dt.replace(tzinfo=timezone.utc)
         case _:
-            raise TypeError("timestamp must be ISO-8601 str or epoch number")
+            raise TypeError("timestamp incorrect")
 
     # convert to GMT
     dt_local = dt.astimezone(LONDON)
@@ -95,7 +95,7 @@ init_db()
 # 3.  Flask API
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:8000"}})
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.post("/api/orders")
 def save_order():
@@ -147,6 +147,17 @@ def save_order():
 
     return jsonify({"status": "ok", "time_id": time_id}), 201
 
+
+@app.get("/api/consumables")
+def consumables():
+    with get_db_conn() as con:
+        cur = con.execute(
+            "SELECT id, name, sale_price AS price, cat "
+            "FROM consumables ORDER BY name"
+        )
+        cols  = [c[0] for c in cur.description]
+        items = [dict(zip(cols, row)) for row in cur.fetchall()]
+    return jsonify(items), 200
 
 # 4.  Run
 
