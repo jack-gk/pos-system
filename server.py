@@ -76,8 +76,8 @@ def init_db():
                 time_id  INTEGER NOT NULL,
                 cons_id  INTEGER NOT NULL,
                 qty      INTEGER NOT NULL DEFAULT 1,
-                FOREIGN KEY (time_id) REFERENCES time_rec(id),
-                FOREIGN KEY (cons_id) REFERENCES consumables(id)
+                FOREIGN KEY (time_id) REFERENCES time_rec(id) ON DELETE CASCADE,
+                FOREIGN KEY (cons_id) REFERENCES consumables(id) ON DELETE CASCADE
             )
         """)
 
