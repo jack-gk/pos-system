@@ -127,7 +127,7 @@ def generateData(start_date, end_date, db_path: str = DB_FILE):
 
         con.commit()
 
-    print(f"Inserted synthetic data for {start_date} → {end_date}")
+    print(f"Inserted synthetic data for {start_date} > {end_date}")
 
 # 3. Run from CLI one-off
 
